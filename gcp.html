@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<!--
+	Future Imperfect by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Single - Future Imperfect by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="single is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">CS486 Midterm</a></h1>
+						<nav class="links">
+							<ul>
+								<li><a href="#">AWS</a></li>
+								<li><a href="#">GCP</a></li>
+							</ul>
+						</nav>
+						<nav class="main">
+							<ul>
+								<li class="search">
+									<a class="fa-search" href="#search">Search</a>
+									<form id="search" method="get" action="#">
+										<input type="text" name="query" placeholder="Search" />
+									</form>
+								</li>
+								<li class="menu">
+									<a class="fa-bars" href="#menu">Menu</a>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="#">Creating a Static Website with a GCP Storage Bucket</a></h2>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2015-11-01">October 14, 2022</time>
+										<a href="#" class="author"><span class="name">Jackson Crawford</span></a>
+									</div>
+								</header>
+								<span class="image featured"><img src="images/Google-Cloud-Storage-Reviews.png" alt="" /></span>
+                                <h3>Creating a Storage Bucket</h3>
+								<p>To create a static website, we must begin by creating a bucket. Once you have logged in and can view your GCP Dashboard, click on the search bar and type in "Bucket." Click on the first result. Now, click on the button in the top bar
+                                    labeled <b>+ CREATE</b>.</p>
+                                <p>From here, we can begin by giving our bucket a name. Your name must be unique, but try and pick one that is relevant to the content that you would like to store in it (handy for legibility later :). Also, feel free to browse the contents
+                                    of the <em>Naming guidelines</em>, which is linked above the text box.</p>
+                                <p>Our next step is to decide where we would like our data to be stored. If this is your first bucket and you are not planning on deploying it to a large audience, I would recommend selecting the <em>Region</em> option and selecting the
+                                    city that you are closest to. What this means is that you will have the lowest possible latency when retreiving the data from the servers. However, if you know that you are going to be accessing this data from multiple places, please
+                                    choose one of the other options that best suits your needs.</p>
+                                <p>The third step in this view is to select a storage class. These all have descriptions underneath, so read them and decide which is best for your use case. If this is for development or testing purposes, I would recommend the standard plan.
+                                    The thing to keep an eye on during this step is the price estimator on the right hand side. It is during this selection that the price will begin to change, so make sure that you monitor this carefully.</p>
+                                <p>Up next, select access control to objects. The selection process here will be pretty straightforward given your needs.</p>
+                                <p>Now let's hit <b>CREATE</b>!</p>
+                                <p>Now, it's time to fill up our bucket! Put whatever data you would like into the bucket by uploading it with the <em>UPLOAD FILES</em> or <em>UPLOAD FOLDER</em> buttons. These are the files that you will need for your static webpage.</p>
+
+                                <h3>Accessibility</h3>
+                                <p>Here we have to modify some permissions to ensure that we can share the files in the bucket with our website and everyone who visits it!</p>
+                                <p>Let's begin by pulling up the list of all your buckets. Click on the bucket that you just created, and then towards the top of the window, select <b>PERMISSIONS</b>. A new pane should appear on the right hand side. From here, click on
+                                    the <b>ADD PRINCIPAL</b> button. In the <em>New principals</em> tab, type in "allUsers". Next, in the <em>Select a role</em> dropdown, select the <em>Cloud Storage->Storage Object Viewer</em> option. Then all that's left is to hit
+                                <em>Save</em> and <em>Allow public access</em> and we're done!</p>
+
+                                <h3>Load Balancer</h3>
+                                <p>This part is critical to being able to use your SSL Certificate later on. The actual purpose of the load balancer is to distribute traffic across different servers, so that you do not have everyone waiting in line for their pages to load.</p>
+                                <p>Open up the search bar and look for "load balance". Click on the first result, and you should see a page with a table that will probably be empty (if you have never done this before). Select the <em>Create Load Balancer</em> button towards
+                                    top. Now you should see an option called "Internet to serverless service". Select that, and then click on "Global HTTP(S) Load Balancer. Give you Load Balancer a name, and then move on.</p>
+
+                                <h3>Backend</h3>
+                                <p>Select the <em>Backends</em> tab, then <em>Create a backend bucket</em>. For Backend bucket name, put the name of your bucket. Then, under <em>Browse</em>, select your bucket with the website content. Now click <b>CREATE</b>!</p>
+
+                                <h3>SSL Certificate</h3>
+                                <p>Now, while still in the Load Balancer page, you should see a tab called <em>Frontends</em>. Select it, then click on <em>Frontend configuration</em>. Set the Protocol to HTTPS, and IP version to IPv4 since we are working with a very small
+                                    amount of data.</p>
+                                <p>Now we must reserve an IP Address. Click on the IP Address, then Create IP address->Reserve a New Static IP Address->Reserve. Select 443 as the port, then go Create a new certificate->Name->Create mode->Google-managed certificate, then
+                                    enter your domain name in the Domains field.</p>
+
+                                <h3>Testing</h3>
+                                <p>Now let's try going to the website! Open up your domain and then concatenate the .html file you have in your bucket, and you should see your site!</p>
+							</article>
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
