@@ -21,8 +21,8 @@
 						<h1><a href="index.html">CS486 Midterm</a></h1>
 						<nav class="links">
 							<ul>
-								<li><a href="#">AWS</a></li>
-								<li><a href="#">GCP</a></li>
+								<li><a href="aws.html">AWS</a></li>
+								<li><a href="gcp.html">GCP</a></li>
 							</ul>
 						</nav>
 						<nav class="main">
@@ -75,10 +75,15 @@
                                     the <b>ADD PRINCIPAL</b> button. In the <em>New principals</em> tab, type in "allUsers". Next, in the <em>Select a role</em> dropdown, select the <em>Cloud Storage->Storage Object Viewer</em> option. Then all that's left is to hit
                                 <em>Save</em> and <em>Allow public access</em> and we're done!</p>
 
+                                <img src="images/perms_users.png" alt="" />
+                                <img src="images/perms_roles.png" alt="" />
+
                                 <h3>Load Balancer</h3>
                                 <p>This part is critical to being able to use your SSL Certificate later on. The actual purpose of the load balancer is to distribute traffic across different servers, so that you do not have everyone waiting in line for their pages to load.</p>
                                 <p>Open up the search bar and look for "load balance". Click on the first result, and you should see a page with a table that will probably be empty (if you have never done this before). Select the <em>Create Load Balancer</em> button towards
                                     top. Now you should see an option called "Internet to serverless service". Select that, and then click on "Global HTTP(S) Load Balancer. Give you Load Balancer a name, and then move on.</p>
+
+                                <img src="images/load_balancer_create.png" alt="" />
 
                                 <h3>Backend</h3>
                                 <p>Select the <em>Backends</em> tab, then <em>Create a backend bucket</em>. For Backend bucket name, put the name of your bucket. Then, under <em>Browse</em>, select your bucket with the website content. Now click <b>CREATE</b>!</p>
@@ -87,7 +92,7 @@
                                 <p>Now, while still in the Load Balancer page, you should see a tab called <em>Frontends</em>. Select it, then click on <em>Frontend configuration</em>. Set the Protocol to HTTPS, and IP version to IPv4 since we are working with a very small
                                     amount of data.</p>
                                 <p>Now we must reserve an IP Address. Click on the IP Address, then Create IP address->Reserve a New Static IP Address->Reserve. Select 443 as the port, then go Create a new certificate->Name->Create mode->Google-managed certificate, then
-                                    enter your domain name in the Domains field.</p>
+                                    enter your domain name in the Domains field. This is the DNS aspect of our site, as this allows for the domain name to be translated to our desired IP Address!</p>
 
                                 <h3>Testing</h3>
                                 <p>Now let's try going to the website! Open up your domain and then concatenate the .html file you have in your bucket, and you should see your site!</p>

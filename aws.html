@@ -21,8 +21,8 @@
 						<h1><a href="index.html">CS486 Midterm</a></h1>
 						<nav class="links">
 							<ul>
-								<li><a href="#">AWS</a></li>
-								<li><a href="#">GCP</a></li>
+								<li><a href="aws.html">AWS</a></li>
+								<li><a href="gcp.html">GCP</a></li>
 							</ul>
 						</nav>
 						<nav class="main">
@@ -54,12 +54,14 @@
 										<a href="#" class="author"><span class="name">Jackson Crawford</span></a>
 									</div>
 								</header>
-								<span class="image featured"><img src="images/Google-Cloud-Storage-Reviews.png" alt="" /></span>
+								<span class="image featured"><img src="images/aws_s3.png" alt="" /></span>
                                 <h3>Creating a Storage Bucket</h3>
 								<p>To create a static website, we must begin by creating a bucket. Once you have logged in and can view your AWS Dashboard, click on the search bar and type in "S3". S3 stands for Simple Storage Service, and is the module of AWS that allows you to
                                     store data in the cloud!</p>
+                                <img src="images/create_bucket.png" alt="" />
                                 <p>Step 1 is to navigate to the S3 module page, then select <b>Create Bucket</b>. Give it a unique name, then select the region closest to your current location to minimize latency when accessing the bucket's data. Next, make sure that <em>Block all public
                                     access</em> is unchecked, then click <b>Create Bucket</b> at the bottom!</p>
+                                <img src="images/bucket_naming.png" alt="" />
                                 <p>Now we need to update the permissions. Click on the bucket's name, then select the <em>Permissions</em> tab, then go Bucket policy->Edit and past the following in the text box:</p>
                                 <code>
                                 {
@@ -80,9 +82,13 @@
                                 }
                                 </code>
 
+                                <br>
+
+                                <img src="images/bucket_policy.png" alt="" />
+
                                 <h3>Linking to Static Webpage</h3>
                                 <p>Create an html file that you would like to upload to AWS on your local machine as <code>index.html</code>. Then, in the AWS window, go to the <em>Objects</em> tab and upload your html file there. Before you move on though, we have to play around with the permissions.</p>
-                                <p>Click on the <b>Permissions tab</b> to view your options. First up is Predefined ACLs, check off <em>Grand public-read access</em>. Next, look at the <em>Properties</em> header, and select the Standard class of storage. Finally, click on <b>Upload</b> at the bottom!</p>
+                                <p>Click on the <b>Permissions tab</b> to view your options. First up is Predefined ACLs, check off <em>Grant public-read access</em>. Next, look at the <em>Properties</em> header, and select the Standard class of storage. Finally, click on <b>Upload</b> at the bottom!</p>
 
                                 <h3>Testing</h3>
                                 Under the <em>Properties</em> tab, you should go to Edit->Enable->Index document and enter <code>index.html</code>. Then press save and scroll down to the Static hosting area, and copy the URL into a new tab. Opening this up will show you your website!</p>
